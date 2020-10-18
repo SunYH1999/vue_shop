@@ -7,6 +7,7 @@ module.exports = {
         .clear()
         .add('./src/main-prod.js')
 
+        //这些依赖包不会合并到一个文件中externals，避免打包之后单个文件过大
       config.set('externals', {
         vue: 'Vue',
         'vue-router': 'VueRouter',
@@ -16,7 +17,7 @@ module.exports = {
         nprogress: 'NProgress',
         'vue-quill-editor': 'VueQuillEditor'
       })
-
+      
       config.plugin('html').tap(args => {
         args[0].isProd = true
         return args
